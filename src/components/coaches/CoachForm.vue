@@ -17,7 +17,7 @@
         </div>
         <div class="form control" :class="{invalid: !rate.isValid}">
             <label for="rate">Hourly Rate</label>
-            <input type="number" id="rate" v-model="rate" @blur="clearValidity('rate')"/>
+            <input type="number" id="rate" v-model.number="rate.val" @blur="clearValidity('rate')"/>
             <p v-if="!rate.isValid">Rate must be greater than 0</p>
         </div>
         <div class="form-control" :class="{invalid: !areas.isValid}">
@@ -83,10 +83,6 @@
                     this.lastName.isValid = false
                     this.formIsValid = false
                 }
-                if(this.lastName.val === ''){
-                    this.lastName.isValid = false
-                    this.formIsValid = false
-                }
                 if(this.description.val === ''){
                     this.description.isValid = false
                     this.formIsValid = false
@@ -102,7 +98,6 @@
             },
             submitForm(){
                 this.validateForm()
-
                 if (!this.formIsValid) return
 
                 const formData = {
@@ -111,9 +106,9 @@
                     desc: this.description.val,
                     rate: this.rate.val,
                     areas: this.areas.val
-                }
-
+                } 
                 this.$emit('save-data', formData)
+                console.log(formData);
             }
         }
     }
