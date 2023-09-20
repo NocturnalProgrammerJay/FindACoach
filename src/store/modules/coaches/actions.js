@@ -9,7 +9,9 @@ export default {
             areas: data.areas
         }
 
-        const response = await fetch(`https://glass-flux-340805-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
+        const token = context.rootGetters.token
+
+        const response = await fetch(`https://glass-flux-340805-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=` + token, {
             method: 'PUT', // create or overwrite if exist already
             body: JSON.stringify(coachData)
         })
