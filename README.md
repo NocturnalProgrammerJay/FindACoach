@@ -1,5 +1,7 @@
 # mainprj
 
+Deployed on firebase [link](https://glass-flux-340805.web.app/coaches)
+
 ## Project setup
 ```
 npm install
